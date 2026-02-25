@@ -1,8 +1,8 @@
 'use client'
 import { useState } from 'react'
-
+type Screen = 'landing' | 'question' | 'result'
 export default function Home() {
-  const [screen, setScreen] = useState('landing')
+  const [screen, setScreen] = useState<Screen>('landing')
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-8">

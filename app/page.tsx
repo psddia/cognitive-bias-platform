@@ -32,13 +32,13 @@ export default function Home() {
           </h2>
           <div className="flex flex-col gap-3">
             <button
-              onClick={() => setScreen('result')}
+              onClick={() => handleAnswer('10 cents')}
               className="border-2 border-gray-300 rounded-lg px-6 py-4 text-left hover:border-indigo-500 hover:bg-indigo-50"
             >
               10 cents
             </button>
             <button
-              onClick={() => setScreen('result')}
+              onClick={() => handleAnswer('5 cents')}
               className="border-2 border-gray-300 rounded-lg px-6 py-4 text-left hover:border-indigo-500 hover:bg-indigo-50"
             >
               5 cents
@@ -49,15 +49,19 @@ export default function Home() {
 
       {screen === 'result' && (
         <div className="text-center max-w-lg">
+          <p className="text-gray-500 mb-2">You answered:</p>
+          <p className="text-xl font-bold mb-4">{answer}</p>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            The answer is 5 cents.
+            The correct answer is 5 cents.
           </h2>
-          <p className="text-gray-600 mb-8">
-            Most people say 10 cents — but that would make the bat cost $1.10, and the total $1.20.
+          <p className="text-gray-600 mb-2">
+            {answer === '5 cents'
+              ? '✓ You got it right.'
+              : '✗ Most people say 10 cents — but that would make the total $1.20.'}
           </p>
           <button
-            onClick={() => setScreen('landing')}
-            className="bg-indigo-700 text-white px-6 py-3 rounded-lg hover:bg-indigo-800"
+            onClick={() => { setScreen('landing'); setAnswer(null) }}
+            className="mt-8 bg-indigo-700 text-white px-6 py-3 rounded-lg hover:bg-indigo-800"
           >
             Start over
           </button>

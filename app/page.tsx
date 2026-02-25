@@ -1,8 +1,16 @@
 'use client'
 import { useState } from 'react'
+
 type Screen = 'landing' | 'question' | 'result'
+
 export default function Home() {
   const [screen, setScreen] = useState<Screen>('landing')
+  const [answer, setAnswer] = useState<string | null>(null)
+
+  function handleAnswer(choice: string) {
+    setAnswer(choice)
+    setScreen('result')
+  }
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-8">
@@ -16,7 +24,7 @@ export default function Home() {
             How does your brain make decisions?
           </p>
           <button
-            onClick={() => setScreen('question')}
+            onClick={() => { setScreen('question'); setAnswer(null) }}
             className="bg-indigo-700 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-800"
           >
             Begin
